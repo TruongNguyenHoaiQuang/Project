@@ -1,26 +1,30 @@
 package com.example.demo_projectd.model;
 
+import javax.persistence.*;
 
-import javax.validation.constraints.NotNull;
-
+@Entity
+@Table(name = "Account")
 public class UserProject {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "t_id")
+    private int t_id;
 
-    private int id;
+    @Column(name = "user_name")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "name")
     private String fullname;
-    private String roleList;
+
+    @Column(name = "role")
+    private String role;
 
     public UserProject() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.role = "ROLE_USER";
     }
 
     public String getUsername() {
@@ -47,11 +51,12 @@ public class UserProject {
         this.fullname = fullname;
     }
 
-    public String getRoleList() {
-        return roleList;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoleList(String roleList) {
-        this.roleList = roleList;
+    public void setRole(String role)
+    {
+        this.role = role;
     }
 }
