@@ -5,7 +5,8 @@ import com.example.demo_projectd.model.UserProject;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository(value = "memoryUserDAO")
 public class MemoryUserDAO implements UserDAO {
@@ -15,16 +16,18 @@ public class MemoryUserDAO implements UserDAO {
     public MemoryUserDAO(){
 
         UserProject chau = new UserProject();
+        chau.setId(1);
         chau.setUsername("chau");
         chau.setPassword("chau");
         chau.setFullname("Nguyen Dinh Chau");
-        chau.setRole("ROLE_USER");
+        chau.setRoleList("ROLE_USER");
 
         UserProject admin = new UserProject();
+        admin.setId(2);
         admin.setUsername("admin");
         admin.setPassword("admin");
         admin.setFullname("Admin");
-        admin.setRole("ROLE_ADMIN");
+        admin.setRoleList("ROLE_ADMIN");
 
         this.listofUsers.add(chau);
         this.listofUsers.add(admin);
@@ -48,7 +51,8 @@ public class MemoryUserDAO implements UserDAO {
             if(user.getUsername().equalsIgnoreCase(userProject.getUsername())) {
                 continue;
             }
-            userProject.setRole("ROLE_USER");
+            userProject.setId(i);
+            userProject.setRoleList("ROLE_USER");
             listofUsers.add(userProject);
         }
     }
@@ -57,16 +61,6 @@ public class MemoryUserDAO implements UserDAO {
     public void detectImage(String nameImage) throws IOException {
 
         ObstacleDetection.singleImageTest(nameImage);
-    }
-
-    @Override
-    public boolean checkByUsername(String username) {
-        for(UserProject user : listofUsers){
-            if (user.getUsername().equalsIgnoreCase(username)){
-                return true;
-            }
-        }
-        return false;
     }
 
 }

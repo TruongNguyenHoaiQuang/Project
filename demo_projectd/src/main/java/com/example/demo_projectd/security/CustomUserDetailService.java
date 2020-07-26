@@ -31,7 +31,7 @@ public class CustomUserDetailService implements UserDetailsService {
         UserProject user = userDAO.findByUsername(username);
 
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-        grantList = Arrays.stream(user.getRole().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        grantList = Arrays.stream(user.getRoleList().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

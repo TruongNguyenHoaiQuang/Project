@@ -12,7 +12,7 @@ import java.io.IOException;
 public class UserService {
 
     @Autowired
-    @Qualifier(value = "mySQLUserDAO")
+    @Qualifier(value = "memoryUserDAO")
     UserDAO userDAO;
 
     public void addUser(UserProject userProject) {

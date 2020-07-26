@@ -11,6 +11,4 @@ public interface UserDAO {
     public void addUser(UserProject userProject);
 
     public void detectImage(String nameImage) throws IOException;
-
-    public boolean checkByUsername(String username);
 }
